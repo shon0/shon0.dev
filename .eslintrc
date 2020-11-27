@@ -19,6 +19,7 @@
     "react",
     "react-hooks"
   ],
+  "ignorePatterns": ["*.config.js"],
   "globals": {
     "Atomics": "readonly",
     "cy": "readonly",

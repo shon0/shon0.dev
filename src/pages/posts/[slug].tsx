@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import Layout from 'components/Layout'
 import { getPost, getPostSlugs } from 'lib/getPost'
 import { ParsedUrlQuery } from 'querystring'
+import styles from 'styles/markdown.module.css'
 
 type Props = {
   title: string
@@ -12,13 +13,24 @@ type Props = {
 const Page: NextPage<Props> = ({ title, published, content }) => {
   return (
     <Layout title={title}>
-      <div className="post-meta">
-        <span>{published}</span>
-      </div>
-      <div
-        className="post-body"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <article>
+        <header className="mb-10">
+          <h1 className="font-montserrat text-4xl font-bold leading-normal">
+            {title}
+          </h1>
+          <div className="mt-3">
+            <span className="font-consolas text-gray-800">
+              <time>{published}</time>
+            </span>
+          </div>
+        </header>
+        <section>
+          <div
+            dangerouslySetInnerHTML={{ __html: content }}
+            className={styles['markdown']}
+          />
+        </section>
+      </article>
     </Layout>
   )
 }

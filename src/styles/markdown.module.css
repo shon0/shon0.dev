@@ -1,0 +1,79 @@
+.markdown {
+  @apply text-base;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  @apply font-bold font-montserrat  mb-4 mt-8 py-2;
+}
+.markdown h1 {
+  @apply text-2xl;
+}
+.markdown h2 {
+  @apply text-xl;
+}
+.markdown h3 {
+  @apply text-lg;
+}
+.markdown h1 a,
+.markdown h2 a,
+.markdown h3 a {
+  @apply invisible -ml-5 mr-1;
+}
+.markdown h1:hover a,
+.markdown h2:hover a,
+.markdown h3:hover a {
+  @apply visible;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-6;
+}
+
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply pl-4;
+}
+
+.markdown ul {
+  @apply list-inside list-disc;
+}
+
+.markdown ol {
+  @apply list-inside list-decimal;
+}
+
+.markdown li {
+  @apply my-2;
+}
+
+.markdown a {
+  @apply text-blue-600;
+}
+
+.markdown code {
+  @apply font-consolas text-black bg-black bg-opacity-5 py-0.5 px-1.5 mx-1  rounded;
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-black border-opacity-10;
+}
+
+.markdown table {
+  @apply table-auto border-collapse border w-full text-sm;
+}
+
+.markdown table thead tr th {
+  @apply border px-2 py-2.5 text-left leading-6;
+}
+.markdown table tbody tr td {
+  @apply border px-2 py-2.5;
+}
+.markdown table tbody tr:nth-child(odd) td {
+  @apply bg-black bg-opacity-5;
+}

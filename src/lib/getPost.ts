@@ -1,9 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import remark from 'remark'
-import html from 'remark-html'
 import matter from 'gray-matter'
 import dayjs from 'dayjs'
+import markdownToHtml from './markdownToHtml'
 
 const DIR = path.join(process.cwd(), 'src/_posts')
 const EXTENSION = '.md'
@@ -30,7 +29,7 @@ const getPost = async ({ slug }: GetPost) => {
   const raw = fs.readFileSync(path.join(DIR, `${slug}${EXTENSION}`), 'utf8')
   const matterResult = matter(raw)
   const { title, published } = matterResult.data as MatterData
-  const parsedContent = await remark().use(html).process(matterResult.content)
+  const parsedContent = await markdownToHtml(matterResult.content)
   const content = parsedContent.toString()
   const publishedDate = dayjs(published).format('YYYY/MM/DD')
 
