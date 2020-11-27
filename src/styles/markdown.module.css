@@ -1,25 +1,25 @@
 .markdown {
-  @apply text-base;
+  @apply text-base leading-6 tracking-wide;
 }
 
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  @apply font-bold font-montserrat  mb-4 mt-8 py-2;
+  @apply font-bold font-montserrat py-2 mb-4;
 }
 .markdown h1 {
-  @apply text-2xl;
+  @apply text-2xl mt-12;
 }
 .markdown h2 {
-  @apply text-xl;
+  @apply text-xl mt-10;
 }
 .markdown h3 {
-  @apply text-lg;
+  @apply text-lg mt-8;
 }
 .markdown h1 a,
 .markdown h2 a,
 .markdown h3 a {
-  @apply invisible -ml-5 mr-1;
+  @apply invisible -ml-6;
 }
 .markdown h1:hover a,
 .markdown h2:hover a,
@@ -31,7 +31,7 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-7;
 }
 
 .markdown ul,
@@ -39,21 +39,18 @@
 .markdown blockquote {
   @apply pl-4;
 }
-
 .markdown ul {
   @apply list-inside list-disc;
 }
-
 .markdown ol {
   @apply list-inside list-decimal;
 }
-
 .markdown li {
   @apply my-2;
 }
 
 .markdown a {
-  @apply text-blue-600;
+  @apply text-blue-500 px-1;
 }
 
 .markdown code {
@@ -67,7 +64,6 @@
 .markdown table {
   @apply table-auto border-collapse border w-full text-sm;
 }
-
 .markdown table thead tr th {
   @apply border px-2 py-2.5 text-left leading-6;
 }

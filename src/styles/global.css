@@ -5,6 +5,9 @@
 @layer base {
   html,
   body {
-    @apply font-notesans p-0 m-0 text-black leading-relaxed text-base;
+    @apply p-0 m-0 text-black leading-relaxed text-base;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI',
+      'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3',
+      Arial, メイリオ, Meiryo, sans-serif;
   }
 }
