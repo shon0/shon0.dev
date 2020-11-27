@@ -87,9 +87,9 @@
 }
 
 .markdown pre {
-  @apply p-5 break-words -mx-8 overflow-auto;
+  @apply px-8 py-6 break-words -mx-8 overflow-auto;
 }
 
 .markdown pre code {
-  @apply text-white;
+  @apply text-white font-consolas text-sm;
 }

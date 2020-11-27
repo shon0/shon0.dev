@@ -108,7 +108,7 @@ React NativeのスタイリングはCSSと似ていますが異なります。�
 そういったケースに対応するには、
 `custom-styles.json`などを作成して、そこに独自のスタイルを追加して、`tailwind` 関数を作るときにで `styles.json` と合わせて引数に渡します。(最終的にオブジェクトであればいいので必ずしもJSONで定義する必要はありません)
 
-```ts
+```typescript
 import { create } from 'tailwind-rn'
 import styles from './styles.json' // tailwind-rnで生成されたスタイル
 import custom from './custom-styles.json' // 独自で追加したいスタイル
