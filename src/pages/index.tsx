@@ -44,7 +44,7 @@ const Page: NextPage<Props> = ({ posts }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   const MAX_COUNT = 5
   const posts = await getPosts()
   return {

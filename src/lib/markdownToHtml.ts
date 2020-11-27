@@ -4,7 +4,8 @@ import gfm from 'remark-gfm'
 import slug from 'rehype-slug'
 import autolink from 'rehype-autolink-headings'
 import remark2rehype from 'remark-rehype'
-import html from 'rehype-stringify'
+import stringify from 'rehype-stringify'
+import shiki from 'rehype-shiki'
 
 const markdownToHtml = async (content: string) => {
   return await unified()
@@ -15,7 +16,8 @@ const markdownToHtml = async (content: string) => {
     .use(autolink, {
       content: linkIcon,
     })
-    .use(html)
+    .use(shiki, { theme: 'material-theme-palenight' })
+    .use(stringify)
     .process(content)
 }
 

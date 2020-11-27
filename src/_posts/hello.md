@@ -53,7 +53,8 @@ $ npx create-tailwind-rn
 
 次に`create()`にさっき生成したJSONを渡して、`tailwind`を作ります。exportしてコンポーネントから使えるようにしておきます。
 
-```ts:tailwind.ts
+```typescript
+// tailwind.ts
 import { create } from 'tailwind-rn'
 import styles from './styles.json'
 
@@ -133,7 +134,8 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 
 以下は `View` コンポーネントをラップしたものです。
 
-```tsx:components/View.tsx
+```tsx
+// components/View.tsx
 import React from 'react'
 import { View } from 'react-native'
 import { tailwind } from '~/config/tailwind'
