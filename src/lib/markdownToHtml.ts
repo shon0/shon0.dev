@@ -5,7 +5,7 @@ import slug from 'rehype-slug'
 import autolink from 'rehype-autolink-headings'
 import remark2rehype from 'remark-rehype'
 import stringify from 'rehype-stringify'
-import shiki from 'rehype-shiki'
+import prism from '@mapbox/rehype-prism'
 
 const markdownToHtml = async (content: string) => {
   return await unified()
@@ -16,7 +16,7 @@ const markdownToHtml = async (content: string) => {
     .use(autolink, {
       content: linkIcon,
     })
-    .use(shiki, { theme: 'material-theme-palenight' })
+    .use(prism)
     .use(stringify)
     .process(content)
 }

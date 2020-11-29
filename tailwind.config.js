@@ -13,16 +13,6 @@ module.exports = {
           'meiryo',
           'sans-serif',
         ],
-        notesans: [
-          'Noto Sans JP',
-          '-apple-system',
-          'Segoe UI',
-          'Helvetica Neue',
-          'Hiragino Kaku Gothic ProN',
-          'メイリオ',
-          'meiryo',
-          'sans-serif',
-        ],
         consolas: [
           'Consolas',
           'Menlo',
@@ -36,8 +26,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      visibility: ['hover', 'focus']
-    }
+      visibility: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }

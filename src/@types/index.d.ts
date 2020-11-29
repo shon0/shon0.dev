@@ -1,1 +1,1 @@
-declare module 'rehype-shiki'
+declare module '@mapbox/rehype-prism'

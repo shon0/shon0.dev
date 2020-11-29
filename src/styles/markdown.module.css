@@ -87,9 +87,109 @@
 }
 
 .markdown pre {
-  @apply px-8 py-6 break-words -mx-8 overflow-auto;
+  @apply px-8 py-6 break-words -mx-6 bg-gray-900 overflow-x-auto;
 }
 
 .markdown pre code {
   @apply text-white font-consolas text-sm;
+}
+
+.markdown pre[class*='language-'] {
+  position: relative;
+}
+
+.markdown.token.namespace {
+  opacity: 0.7;
+}
+
+.markdown.token.comment,
+.markdown.token.prolog,
+.markdown.token.doctype,
+.markdown.token.cdata {
+  color: #92a3ad;
+}
+
+.markdown.token.operator,
+.markdown.token.boolean,
+.markdown.token.number {
+  color: #ffc164;
+}
+
+.markdown.token.attr-name,
+.markdown.token.string {
+  color: #ffc164;
+}
+
+.markdown.token.entity,
+.markdown.token.url,
+.markdown.language-css .token.string,
+.markdown.style .token.string {
+  color: #ffc164;
+}
+
+.markdown.token.selector {
+  color: #ff8e8e;
+}
+
+.markdown.token.atrule,
+.markdown.token.attr-value,
+.markdown.token.keyword,
+.markdown.token.important,
+.markdown.token.deleted {
+  color: #ff8e8e;
+}
+
+.markdown.token.inserted {
+  color: #b4ff9b;
+}
+
+.markdown.token.regex,
+.markdown.token.statement {
+  color: #ffc164;
+}
+
+.token.placeholder,
+.token.variable {
+  color: #fff;
+}
+
+.markdown.token.important,
+.markdown.token.statement,
+.markdown.token.bold {
+  font-weight: 600;
+}
+
+.markdown.token.punctuation {
+  color: #859aff;
+}
+
+.markdown.token.entity {
+  cursor: help;
+}
+
+.markdown.token.italic {
+  font-style: italic;
+}
+
+.markdown.token.tag,
+.markdown.token.property,
+.markdown.token.function {
+  color: #56cdff;
+}
+
+.markdown.token.attr-name {
+  color: #ff8e8e;
+}
+
+.markdown.token.attr-value {
+  color: #ffc164;
+}
+
+.markdown.token.style,
+.markdown.token.script {
+  color: #ffc164;
+}
+
+.markdown.token.script .token.keyword {
+  color: #ffc164;
 }
