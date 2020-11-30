@@ -1,8 +1,5 @@
 module.exports = {
-  extends: [
-    './node_modules/prettier-stylelint/config.js',
-    'stylelint-config-standard',
-  ],
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   rules: {
     'at-rule-no-unknown': [
       true,
@@ -21,5 +18,9 @@ module.exports = {
     'no-descending-specificity': null,
     'declaration-colon-newline-after': null,
     'font-family-no-missing-generic-family-keyword': null,
+    'declaration-empty-line-before': 'never',
+    indentation: 2,
+    'no-missing-end-of-source-newline': null,
+    'string-quotes': 'single',
   },
 }

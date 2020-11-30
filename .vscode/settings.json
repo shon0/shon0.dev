@@ -2,9 +2,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.validate": ["javascript"],
   "tailwindCSS.includeLanguages": { "plaintext": "javascript" },
-  "css.validate": false
+  "css.validate": false,
 }
