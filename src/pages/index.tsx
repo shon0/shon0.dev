@@ -13,33 +13,23 @@ type Props = {
 
 const Page: NextPage<Props> = ({ posts }) => {
   return (
-    <Layout title="">
-      {posts.map(post => (
-        <div key={post.slug} className="post-teaser">
-          <h2>
+    <Layout>
+      <div>
+        {posts.map(post => (
+          <div key={post.slug} className="mb-5">
             <Link href="/posts/[id]" as={`/posts/${post.slug}`}>
-              <a>{post.title}</a>
+              <a className="font-montserrat text-2xl font-bold leading-normal tracking-wide">
+                {post.title}
+              </a>
             </Link>
-          </h2>
-          <div>
-            <span>{post.published}</span>
+            <div>
+              <span className="font-consolas text-gray-800 text-sm">
+                {post.published}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
-      <style jsx>{`
-        .post-teaser {
-          margin-bottom: 2em;
-        }
-        .post-teaser h2 a {
-          text-decoration: none;
-        }
-        .home-archive {
-          margin: 3em;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-        }
-      `}</style>
+        ))}
+      </div>
     </Layout>
   )
 }
