@@ -26,17 +26,9 @@ const Component: React.FC<Props> = ({ title, children }) => {
       <main>
         <div>{children}</div>
       </main>
-      <footer>&copy; {SITE_TITLE}</footer>
-      <style jsx>{`
-        footer {
-          margin-top: 4em;
-          padding-top: 2em;
-          padding-bottom: 2em;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      `}</style>
+      <footer className="flex justify-center items-center mt-16 py-16">
+        &copy; {SITE_TITLE}
+      </footer>
     </div>
   )
 }
