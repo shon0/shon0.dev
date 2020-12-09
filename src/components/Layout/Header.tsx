@@ -8,7 +8,7 @@ const Component: React.FC = () => {
   return (
     <header className="flex-1 pt-12 mb-10">
       <div className="flex items-center justify-start">
-        <h1 className="text-2xl font-bold leading-normal font-montserrat hover:text-gray-700">
+        <h1 className="text-xl font-black leading-normal font-consolas hover:text-gray-700">
           <Link href="/">
             <a>{SITE_TITLE}</a>
           </Link>
