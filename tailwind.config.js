@@ -21,6 +21,7 @@ module.exports = {
           'Courier New',
           'monospace',
         ],
+        inconsolata: ['Inconsolata'],
       },
     },
   },
