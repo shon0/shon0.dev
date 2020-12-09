@@ -1,5 +1,10 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "label": ["update dependencies"],
+  "schedule": ["before 10am on Monday"],
+  "minor": {
+    "groupName": "all dependencies"
+  }
 }
