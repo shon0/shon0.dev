@@ -3,6 +3,7 @@
     "config:base"
   ],
   "label": ["update dependencies"],
+  "timezone": "Asia/Tokyo",
   "schedule": ["before 10am on Monday"],
   "minor": {
     "groupName": "all dependencies"
