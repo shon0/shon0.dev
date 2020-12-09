@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "label": ["update dependencies"],
+  "labels": ["update dependencies"],
   "timezone": "Asia/Tokyo",
   "schedule": ["before 10am on Monday"],
   "minor": {
