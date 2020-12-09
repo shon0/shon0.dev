@@ -10,7 +10,7 @@ const Component: React.FC = () => {
       <div className="flex items-center justify-start">
         <h1 className="text-2xl font-black leading-normal font-inconsolata hover:text-gray-700">
           <Link href="/">
-            <a>{SITE_TITLE}</a>
+            <a>🚀 {SITE_TITLE}</a>
           </Link>
         </h1>
         <div className="ml-auto flex justify-center">
