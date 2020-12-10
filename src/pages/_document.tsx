@@ -7,6 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <meta name="robots" content="noindex" />
           {/* Google Analytics */}
           {env.NODE_ENV === 'production' && (
             <>
