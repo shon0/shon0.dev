@@ -1,8 +1,6 @@
 import Link from 'next/link'
-import { SITE_TITLE } from 'constant/meta'
+import { SITE_TITLE, GITHUB_URL } from 'constant'
 import Icon from '../icon'
-
-const GitHubURL = 'https://github.com/ShonoKoga'
 
 const Component: React.FC = () => {
   return (
@@ -15,10 +13,10 @@ const Component: React.FC = () => {
         </h1>
         <div className="ml-auto flex justify-center">
           <a
-            href={GitHubURL}
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-gray-700"
+            className="text-black hover:text-gray-700 text-base"
           >
             <Icon.Github />
           </a>

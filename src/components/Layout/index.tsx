@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { SITE_TITLE } from 'constant/meta'
+import { SITE_TITLE } from 'constant'
 import Header from './Header'
 import Footer from './Footer'
 
