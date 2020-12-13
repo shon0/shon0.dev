@@ -1,6 +1,6 @@
 type Props = {
-  width: string
-  height: string
+  width?: string
+  height?: string
 }
 
 const Component: React.FC<Props> = ({ width = '24', height = '24' }) => (
