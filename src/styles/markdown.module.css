@@ -58,7 +58,11 @@
 }
 
 .markdown li {
-  @apply my-2;
+  @apply my-2 break-words;
+}
+
+.markdown li > a {
+  @apply break-all;
 }
 
 .markdown a {
