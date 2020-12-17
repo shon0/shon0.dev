@@ -16,13 +16,13 @@ const Component: React.FC<Props> = ({ title, slug, children }) => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta property="og:title" content={title} />
-        <meta property="og:type" content="blog" />
+        <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://shon0.dev/${slug ?? ''}`} />
         <meta
           property="og:image"
-          content={`https://ogp.shon0.dev/${
+          content={encodeURI(`https://ogp.shon0.dev/${
             title ?? SITE_TITLE
-          }?theme=shon0.dev`}
+          }?theme=shon0.dev`)}
         />
         <meta property="og:site_name" content={SITE_TITLE} />
         {/* <meta property="og:description" content="ページのディスクリプション" /> */}
