@@ -8,11 +8,12 @@ type Props = {
   title: string
   published: boolean
   content: string
+  slug: string
 }
 
-const Page: NextPage<Props> = ({ title, published, content }) => {
+const Page: NextPage<Props> = ({ title, published, content, slug }) => {
   return (
-    <Layout title={title}>
+    <Layout title={title} slug={slug}>
       <article>
         <header className="mb-10">
           <h1 className="font-montserrat text-4xl font-bold leading-normal">

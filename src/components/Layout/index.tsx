@@ -5,15 +5,27 @@ import Footer from './Footer'
 
 type Props = {
   title?: string
+  slug?: string
 }
 
-const Component: React.FC<Props> = ({ title, children }) => {
+const Component: React.FC<Props> = ({ title, slug, children }) => {
   return (
     <div className="max-w-screen-md mx-auto px-4 sm:px-7">
       <Head>
         <title>{title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="blog" />
+        <meta property="og:url" content={`https://shon0.dev/${slug ?? ''}`} />
+        <meta
+          property="og:image"
+          content={`https://ogp.shon0.dev/${
+            title ?? SITE_TITLE
+          }?theme=shon0.dev`}
+        />
+        <meta property="og:site_name" content={SITE_TITLE} />
+        {/* <meta property="og:description" content="ページのディスクリプション" /> */}
       </Head>
       <Header />
       <main>
