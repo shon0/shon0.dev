@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { SITE_TITLE } from 'constant'
+import { SITE_TITLE, URL_HOST } from 'constant'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -20,15 +20,20 @@ const Component: React.FC<Props> = ({ title, slug, children }) => {
           content={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://shon0.dev/${slug ?? ''}`} />
+        <meta
+          property="og:url"
+          content={`${URL_HOST}${slug ? `/${slug}` : ''}`}
+        />
         <meta
           property="og:image"
-          content={encodeURI(
-            `https://og-image.shon0.dev/${title ?? SITE_TITLE}?theme=shon0.dev`,
-          )}
+          content={
+            title
+              ? encodeURI(`https://og-image.shon0.dev/${title}?theme=shon0.dev`)
+              : `${URL_HOST}/og-image.png`
+          }
         />
         <meta property="og:site_name" content={SITE_TITLE} />
-        <meta property="og:description" content="" />
+        <meta property="og:description" content="ブログです" />
       </Head>
       <Header />
       <main>
