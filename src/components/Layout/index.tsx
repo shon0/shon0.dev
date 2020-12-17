@@ -15,17 +15,20 @@ const Component: React.FC<Props> = ({ title, slug, children }) => {
         <title>{title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta property="og:title" content={title} />
+        <meta
+          property="og:title"
+          content={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://shon0.dev/${slug ?? ''}`} />
         <meta
           property="og:image"
-          content={encodeURI(`https://ogp.shon0.dev/${
-            title ?? SITE_TITLE
-          }?theme=shon0.dev`)}
+          content={encodeURI(
+            `https://og-image.shon0.dev/${title ?? SITE_TITLE}?theme=shon0.dev`,
+          )}
         />
         <meta property="og:site_name" content={SITE_TITLE} />
-        {/* <meta property="og:description" content="ページのディスクリプション" /> */}
+        <meta property="og:description" content="" />
       </Head>
       <Header />
       <main>
