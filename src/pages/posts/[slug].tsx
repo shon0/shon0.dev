@@ -20,7 +20,7 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
         title={`${title} | ${SITE_TITLE}`}
         description={content
           .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-          .slice(0, 100)}
+          .slice(0, 100) + '...'}
         url={`${URL_HOST}/${slug}`}
         image={encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)}
       />
