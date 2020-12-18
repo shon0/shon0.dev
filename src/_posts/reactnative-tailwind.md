@@ -128,7 +128,7 @@ https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 
 この拡張機能をつかうと、入力の補完ができます。
 
-ですが、候補が出てくる条件が`class=`、`className=`と決まっているため`tailwind()`や`style=`では表示されません。(対応してほしいと、いうIssueはありましたが、`tailwind-rn`は公式のパッケージではないので対応しない方針のようです。残念。)
+ですが、候補が出てくる条件が`class=`、`className=`と決まっているため`tailwind()`や`style=`では表示されません。(対応してほしいというIssueはありましたが、`tailwind-rn`は公式のパッケージではないので対応しない方針のようです。残念。)
 
 もし拡張機能を利用したいなら、頻出するコンポーネントを `class` あるいは `className` のpropsでスタイリングできるようにラップするしかなさそうです。
 
@@ -143,8 +143,7 @@ import { tailwind } from '~/config/tailwind'
 const Component: React.FC<
   React.ComponentProps<typeof View> & {
     className?: string
-  }
-> = ({ className, children, style, ...rest }) => (
+  } => ({ className, children, style, ...rest }) => (
   <View style={[className ? tailwind(className) : undefined, style]} {...rest}>
     {children}
   </View>

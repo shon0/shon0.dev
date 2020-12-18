@@ -6,4 +6,5 @@
   "eslint.validate": ["javascript"],
   "tailwindCSS.includeLanguages": { "plaintext": "javascript" },
   "css.validate": false,
+  "prettier.disableLanguages": ["markdown"]
 }
