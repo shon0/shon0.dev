@@ -1,5 +1,10 @@
 module.exports = {
-  purge: ['./src/{components,pages}/**/*.{ts,tsx}'],
+  purge: {
+    content: ['./src/{components,pages}/**/*.{ts,tsx}'],
+    options: {
+      safelist: ['inline', 'align-baseline'],
+    },
+  },
   theme: {
     extend: {
       fontFamily: {
