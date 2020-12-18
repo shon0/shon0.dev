@@ -37,13 +37,15 @@ const getPost = async ({ slug }: GetPost) => {
     title,
     published: publishedDate,
     content,
-    slug,
   }
 }
 
 const getPosts = async () => {
   const contents = await Promise.all(
-    getPostSlugs().map(slug => getPost({ slug })),
+    getPostSlugs().map(async slug => {
+      const post = await getPost({ slug })
+      return { ...post, slug }
+    }),
   )
   return contents.sort((a, b) => (a.published < b.published ? 1 : -1))
 }

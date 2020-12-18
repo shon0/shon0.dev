@@ -1,7 +1,9 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import Layout from 'components/Layout'
-import { getPost, getPostSlugs } from 'lib/getPost'
 import { ParsedUrlQuery } from 'querystring'
+import Layout from 'components/Layout'
+import Head from 'components/Head'
+import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
+import { getPost, getPostSlugs } from 'lib/getPost'
 import styles from 'styles/markdown.module.css'
 
 type Props = {
@@ -13,7 +15,15 @@ type Props = {
 
 const Page: NextPage<Props> = ({ title, published, content, slug }) => {
   return (
-    <Layout title={title} slug={slug}>
+    <Layout>
+      <Head
+        title={`${title} | ${SITE_TITLE}`}
+        description={content
+          .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
+          .slice(0, 100)}
+        url={`${URL_HOST}/${slug}`}
+        image={encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)}
+      />
       <article>
         <header className="mb-10">
           <h1 className="font-montserrat text-4xl font-bold leading-normal">
@@ -41,9 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const content = await getPost({ slug: Array.isArray(slug) ? slug[0] : slug })
   return {
-    props: {
-      ...content,
-    },
+    props: { ...content, slug },
   }
 }
 

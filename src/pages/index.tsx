@@ -1,7 +1,9 @@
 import { NextPage, GetStaticProps } from 'next'
 import Link from 'next/link'
 import Layout from 'components/Layout'
+import Head from 'components/Head'
 import { getPosts } from 'lib/getPost'
+import { SITE_TITLE, URL_HOST } from 'constant'
 
 type Props = {
   posts: {
@@ -14,6 +16,12 @@ type Props = {
 const Page: NextPage<Props> = ({ posts }) => {
   return (
     <Layout>
+      <Head
+        title={SITE_TITLE}
+        description={'@shon0のブログ'}
+        url={URL_HOST}
+        image={`${URL_HOST}/og-image.png`}
+      />
       <div>
         {posts.map(post => (
           <div key={post.slug} className="mb-5">
@@ -35,12 +43,9 @@ const Page: NextPage<Props> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const MAX_COUNT = 5
   const posts = await getPosts()
   return {
-    props: {
-      posts: posts.slice(0, MAX_COUNT),
-    },
+    props: { posts },
   }
 }
 
