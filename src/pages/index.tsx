@@ -18,7 +18,7 @@ const Page: NextPage<Props> = ({ posts }) => {
     <Layout>
       <Head
         title={SITE_TITLE}
-        description={'@shon0のブログ'}
+        description={'なんのクセもないブログ'}
         url={URL_HOST}
         image={`${URL_HOST}/og-image.png`}
       />
