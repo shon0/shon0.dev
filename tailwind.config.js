@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: [
+        'noto-mont': [
+          'Noto Sans JP',
           'Montserrat',
           '-apple-system',
           'Segoe UI',

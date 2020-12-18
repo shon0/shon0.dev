@@ -1,11 +1,11 @@
 .markdown {
-  @apply text-base leading-7 tracking-wide;
+  @apply text-base leading-8 tracking-wide;
 }
 
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  @apply font-bold font-montserrat py-2 mb-4;
+  @apply font-bold font-noto-mont py-2 -mb-4;
 }
 
 .markdown h1 {
@@ -95,7 +95,7 @@
 }
 
 .markdown pre {
-  @apply overflow-x-auto bg-gray-900 -mx-4 sm:-mx-6 px-4 sm:px-8 py-3 sm:py-6;
+  @apply overflow-x-auto bg-gray-900 -mx-4 sm:-mx-6 px-4 sm:px-8 py-3 sm:py-6 leading-7;
 }
 
 .markdown pre code {

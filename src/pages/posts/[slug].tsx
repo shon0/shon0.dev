@@ -18,15 +18,16 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
     <Layout>
       <Head
         title={`${title} | ${SITE_TITLE}`}
-        description={content
-          .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-          .slice(0, 100) + '...'}
+        description={
+          content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) +
+          '...'
+        }
         url={`${URL_HOST}/${slug}`}
         image={encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)}
       />
       <article>
         <header className="mb-10">
-          <h1 className="font-montserrat text-4xl font-bold leading-normal">
+          <h1 className="font-noto-mont text-4xl font-bold leading-normal">
             {title}
           </h1>
           <div className="mt-3">

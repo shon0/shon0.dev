@@ -9,7 +9,6 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="robots" content="noindex" />
           <link rel="icon" href="/favicon.ico" />
-          <meta name="viewport" content="width=device-width,initial-scale=1" />
           {/* Google Analytics */}
           {env.NODE_ENV === 'production' && (
             <>
@@ -34,7 +33,7 @@ export default class MyDocument extends Document {
           {/* Google Fonts */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inconsolata:wght@400;800;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@700&family=Inconsolata:wght@400;800;900&display=swap"
             rel="stylesheet"
           />
         </Head>
