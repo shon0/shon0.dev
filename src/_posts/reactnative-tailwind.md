@@ -1,6 +1,6 @@
 ---
 title: React NativeでもTailwindを使いたい
-published: 2020-11-27
+published: 2020-11-21
 ---
 
 React Native の標準スタイリングである `StyleSheet` も良いのですが、どうも開発スピードが上がらなかったため `tailwind-rn` を使って `Tailwind` を導入したので、使い方について紹介。
