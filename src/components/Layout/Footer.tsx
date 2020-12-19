@@ -1,10 +1,10 @@
 import { SITE_TITLE, GITHUB_URL, TWITTER_URL } from 'constant'
 import Link from 'next/link'
-import Icon from '../icon'
+import Icon from '../Icon'
 
 const Component: React.FC = () => {
   return (
-    <footer className="flex justify-center items-center mt-16 py-16 border-gray-100 border-t">
+    <footer className="flex justify-center items-center mt-8 py-16 border-gray-100 border-t">
       <div className="text-sm">
         <Link href="/">
           <a>

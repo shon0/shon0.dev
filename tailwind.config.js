@@ -29,6 +29,9 @@ module.exports = {
         ],
         inconsolata: ['Inconsolata'],
       },
+      textColor: {
+        twitter: '#00acee',
+      },
     },
   },
   variants: {

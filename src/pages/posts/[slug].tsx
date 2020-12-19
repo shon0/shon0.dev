@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
+import Icon from 'components/Icon'
 import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
 import { getPost, getPostSlugs } from 'lib/getPost'
 import styles from 'styles/markdown.module.css'
@@ -14,16 +15,24 @@ type Props = {
 }
 
 const Page: NextPage<Props> = ({ title, published, content, slug }) => {
+  const description =
+    content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
+  const url = `${URL_HOST}/${slug}`
+  const tweetUrl = encodeURI(
+    `http://twitter.com/share?url=${url}&text=${`${title} | ${SITE_TITLE.replace(
+      '.',
+      '',
+    )}`}`,
+  )
+  const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)
+
   return (
     <Layout>
       <Head
         title={`${title} | ${SITE_TITLE}`}
-        description={
-          content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) +
-          '...'
-        }
-        url={`${URL_HOST}/${slug}`}
-        image={encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)}
+        description={description}
+        url={url}
+        image={imageUrl}
       />
       <article>
         <header className="mb-10">
@@ -43,6 +52,16 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
           />
         </section>
       </article>
+      <div className="mt-3 px-3 flex justify-end">
+        <a
+          href={tweetUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-twitter"
+        >
+          <Icon.Twitter />
+        </a>
+      </div>
     </Layout>
   )
 }
