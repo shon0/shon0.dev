@@ -1,3 +1,3 @@
-# Blog
+# shon0/Blog
 
-WIP
+https://shon0.dev/
