@@ -12,6 +12,7 @@ const Component: React.FC<Props> = ({ title, url, image, description }) => {
   return (
     <Head>
       <title>{title}</title>
+      <meta name="description" content={description} />
       <meta property="og:site_name" content={SITE_TITLE} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
