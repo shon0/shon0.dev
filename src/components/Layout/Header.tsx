@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SITE_TITLE, GITHUB_URL } from 'constant'
+import { SITE_TITLE, GITHUB_URL, TWITTER_URL } from 'constant'
 import Icon from '../icon'
 
 const Component: React.FC = () => {
@@ -16,9 +16,17 @@ const Component: React.FC = () => {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-gray-700 text-base"
+            className="text-black hover:text-gray-700"
           >
             <Icon.Github />
+          </a>
+          <a
+            href={TWITTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-700 ml-3"
+          >
+            <Icon.Twitter />
           </a>
         </div>
       </div>
