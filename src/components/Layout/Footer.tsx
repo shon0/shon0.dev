@@ -1,6 +1,6 @@
-import { SITE_TITLE, GITHUB_URL, TWITTER_URL } from 'constant'
 import Link from 'next/link'
-import Icon from '../Icon'
+import { SITE_TITLE, GITHUB_URL, TWITTER_URL } from 'constant'
+import Icon from 'components/Icon'
 
 const Component: React.FC = () => {
   return (
