@@ -26,7 +26,7 @@ const Page: NextPage<Props> = ({ posts }) => {
         {posts.map(post => (
           <div key={post.slug} className="mb-5">
             <Link href="/posts/[id]" as={`/posts/${post.slug}`}>
-              <a className="font-noto-mont text-2xl font-bold leading-normal tracking-wide text-black hover:text-gray-700">
+              <a className="text-2xl font-bold leading-normal tracking-wide text-black hover:text-gray-700">
                 {post.title}
               </a>
             </Link>

@@ -36,9 +36,7 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
       />
       <article>
         <header className="mb-10">
-          <h1 className="font-noto-mont text-4xl font-bold leading-normal">
-            {title}
-          </h1>
+          <h1 className="text-4xl font-bold leading-normal">{title}</h1>
           <div className="mt-3">
             <span className="font-consolas text-gray-800">
               <time>{published}</time>
