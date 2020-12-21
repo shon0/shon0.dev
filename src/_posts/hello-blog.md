@@ -5,4 +5,4 @@ publishedAt: 2020/12/22
 
 JAMstackな実装をしてみたくて、Next.jsでブログを作ってみました。
 
-![test](/ufo.png)
+![動的OGP](/post/hello-blog-ogp.png)
