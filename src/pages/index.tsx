@@ -27,10 +27,23 @@ const Page: NextPage<Props> = ({ posts }) => {
                 {post.title}
               </a>
             </Link>
-            <div>
+            <div className="flex items-center">
               <span className="font-consolas text-gray-800 text-sm">
                 {post.publishedAt}
               </span>
+              {post.tags && (
+                <div className="ml-3">
+                  {post.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="font-consolas text-gray-700 text-sm ml-2 first:ml-0"
+                    >
+                      <span className="pr-0.5">#</span>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}

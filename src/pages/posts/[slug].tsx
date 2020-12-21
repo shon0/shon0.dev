@@ -10,15 +10,15 @@ import styles from 'styles/markdown.module.css'
 
 type Props = Post
 
-const Page: NextPage<Props> = ({ title, publishedAt, content, slug }) => {
+const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
   const description =
     content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
   const url = `${URL_HOST}/${slug}`
   const tweetUrl = encodeURI(
-    `http://twitter.com/share?url=${url}&text=${`${title} | ${SITE_TITLE.replace(
+    `http://twitter.com/share?url=${url}&text=${title} | ${SITE_TITLE.replace(
       '.',
       '',
-    )}`}`,
+    )}`,
   )
   const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}.png?theme=shon0.dev`)
 
@@ -33,10 +33,19 @@ const Page: NextPage<Props> = ({ title, publishedAt, content, slug }) => {
       <article>
         <header className="mb-10">
           <h1 className="text-4xl font-bold leading-normal">{title}</h1>
-          <div className="mt-3">
+          <div className="flex mt-3">
             <span className="font-consolas text-gray-800">
               <time>{publishedAt}</time>
             </span>
+            {tags && (
+              <div className="ml-3">
+                {tags.map(tag => (
+                  <span key={tag} className="font-consolas text-gray-700 ml-2 first:ml-0">
+                    <span className="pr-0.5">#</span>{tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </header>
         <section>
