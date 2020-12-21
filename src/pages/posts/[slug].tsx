@@ -24,7 +24,7 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
       '',
     )}`}`,
   )
-  const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)
+  const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}.png?theme=shon0.dev`)
 
   return (
     <Layout>
