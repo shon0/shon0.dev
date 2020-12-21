@@ -4,13 +4,10 @@ import Layout from 'components/Layout'
 import Head from 'components/Head'
 import { getPosts } from 'lib/getPost'
 import { SITE_TITLE, URL_HOST } from 'constant'
+import { Post } from 'lib/types/post'
 
 type Props = {
-  posts: {
-    slug: string
-    title: string
-    published: string
-  }[]
+  posts: Post[]
 }
 
 const Page: NextPage<Props> = ({ posts }) => {
@@ -26,14 +23,27 @@ const Page: NextPage<Props> = ({ posts }) => {
         {posts.map(post => (
           <div key={post.slug} className="mb-5">
             <Link href="/posts/[id]" as={`/posts/${post.slug}`}>
-              <a className="font-noto-mont text-2xl font-bold leading-normal tracking-wide text-black hover:text-gray-700">
+              <a className="text-2xl font-bold leading-normal tracking-wide text-black hover:text-gray-700">
                 {post.title}
               </a>
             </Link>
-            <div>
+            <div className="flex items-center">
               <span className="font-consolas text-gray-800 text-sm">
-                {post.published}
+                {post.publishedAt}
               </span>
+              {post.tags && (
+                <div className="ml-3">
+                  {post.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="font-consolas text-gray-700 text-sm ml-2 first:ml-0"
+                    >
+                      <span className="pr-0.5">#</span>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}

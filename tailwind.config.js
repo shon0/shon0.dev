@@ -8,17 +8,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'noto-mont': [
-          'Noto Sans JP',
-          'Montserrat',
-          '-apple-system',
-          'Segoe UI',
-          'Helvetica Neue',
-          'Hiragino Kaku Gothic ProN',
-          'メイリオ',
-          'meiryo',
-          'sans-serif',
-        ],
         consolas: [
           'Consolas',
           'Menlo',

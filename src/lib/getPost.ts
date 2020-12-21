@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import dayjs from 'dayjs'
 import markdownToHtml from './markdownToHtml'
+import { MatterData } from './types/post'
 
 const DIR = path.join(process.cwd(), 'src/_posts')
 const EXTENSION = '.md'
@@ -16,38 +16,30 @@ const getPostSlugs = () => {
   return slugs
 }
 
-type GetPost = {
-  slug: string
-}
-
-type MatterData = {
-  title: string
-  published: string
-}
-
-const getPost = async ({ slug }: GetPost) => {
+const getPost = async (slug: string) => {
   const raw = fs.readFileSync(path.join(DIR, `${slug}${EXTENSION}`), 'utf8')
   const matterResult = matter(raw)
-  const { title, published } = matterResult.data as MatterData
+  const matterData = matterResult.data as MatterData
   const parsedContent = await markdownToHtml(matterResult.content)
   const content = parsedContent.toString()
-  const publishedDate = dayjs(published).format('YYYY/MM/DD')
 
   return {
-    title,
-    published: publishedDate,
     content,
+    slug,
+    ...matterData,
   }
 }
 
 const getPosts = async () => {
-  const contents = await Promise.all(
+  const posts = await Promise.all(
     getPostSlugs().map(async slug => {
-      const post = await getPost({ slug })
-      return { ...post, slug }
+      const post = await getPost(slug)
+      return { ...post }
     }),
   )
-  return contents.sort((a, b) => (a.published < b.published ? 1 : -1))
+  return posts
+    .filter(post => !post.draft)
+    .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
 }
 
 export { getPostSlugs, getPost, getPosts }

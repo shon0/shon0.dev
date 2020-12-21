@@ -5,26 +5,22 @@ import Head from 'components/Head'
 import Icon from 'components/icon'
 import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
 import { getPost, getPostSlugs } from 'lib/getPost'
+import { Post } from 'lib/types/post'
 import styles from 'styles/markdown.module.css'
 
-type Props = {
-  title: string
-  published: boolean
-  content: string
-  slug: string
-}
+type Props = Post
 
-const Page: NextPage<Props> = ({ title, published, content, slug }) => {
+const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
   const description =
     content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
   const url = `${URL_HOST}/${slug}`
   const tweetUrl = encodeURI(
-    `http://twitter.com/share?url=${url}&text=${`${title} | ${SITE_TITLE.replace(
+    `http://twitter.com/share?url=${url}&text=${title} | ${SITE_TITLE.replace(
       '.',
       '',
-    )}`}`,
+    )}`,
   )
-  const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}?theme=shon0.dev`)
+  const imageUrl = encodeURI(`${OG_IMAGE_URL}/${title}.png?theme=shon0.dev`)
 
   return (
     <Layout>
@@ -36,13 +32,20 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
       />
       <article>
         <header className="mb-10">
-          <h1 className="font-noto-mont text-4xl font-bold leading-normal">
-            {title}
-          </h1>
-          <div className="mt-3">
+          <h1 className="text-4xl font-bold leading-normal">{title}</h1>
+          <div className="flex mt-3">
             <span className="font-consolas text-gray-800">
-              <time>{published}</time>
+              <time>{publishedAt}</time>
             </span>
+            {tags && (
+              <div className="ml-3">
+                {tags.map(tag => (
+                  <span key={tag} className="font-consolas text-gray-700 ml-2 first:ml-0">
+                    <span className="pr-0.5">#</span>{tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </header>
         <section>
@@ -69,9 +72,9 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Required<ParsedUrlQuery>
 
-  const content = await getPost({ slug: Array.isArray(slug) ? slug[0] : slug })
+  const content = await getPost(Array.isArray(slug) ? slug[0] : slug)
   return {
-    props: { ...content, slug },
+    props: { ...content },
   }
 }
 
