@@ -18,7 +18,7 @@ const Component = () => {
       />
       <div className="text-center">
         <h2 className="text-4xl font-noto-mont">404</h2>
-        <Image src="/taken.png" width={500} height={500} />
+        <Image src="/ufo.png" width={500} height={500} />
       </div>
     </Layout>
   )
