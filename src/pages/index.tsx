@@ -4,13 +4,10 @@ import Layout from 'components/Layout'
 import Head from 'components/Head'
 import { getPosts } from 'lib/getPost'
 import { SITE_TITLE, URL_HOST } from 'constant'
+import { Post } from 'lib/types/post'
 
 type Props = {
-  posts: {
-    slug: string
-    title: string
-    published: string
-  }[]
+  posts: Post[]
 }
 
 const Page: NextPage<Props> = ({ posts }) => {
@@ -32,7 +29,7 @@ const Page: NextPage<Props> = ({ posts }) => {
             </Link>
             <div>
               <span className="font-consolas text-gray-800 text-sm">
-                {post.published}
+                {post.publishedAt}
               </span>
             </div>
           </div>

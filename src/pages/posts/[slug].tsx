@@ -5,16 +5,12 @@ import Head from 'components/Head'
 import Icon from 'components/icon'
 import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
 import { getPost, getPostSlugs } from 'lib/getPost'
+import { Post } from 'lib/types/post'
 import styles from 'styles/markdown.module.css'
 
-type Props = {
-  title: string
-  published: boolean
-  content: string
-  slug: string
-}
+type Props = Post
 
-const Page: NextPage<Props> = ({ title, published, content, slug }) => {
+const Page: NextPage<Props> = ({ title, publishedAt, content, slug }) => {
   const description =
     content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
   const url = `${URL_HOST}/${slug}`
@@ -39,7 +35,7 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
           <h1 className="text-4xl font-bold leading-normal">{title}</h1>
           <div className="mt-3">
             <span className="font-consolas text-gray-800">
-              <time>{published}</time>
+              <time>{publishedAt}</time>
             </span>
           </div>
         </header>
@@ -67,9 +63,9 @@ const Page: NextPage<Props> = ({ title, published, content, slug }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Required<ParsedUrlQuery>
 
-  const content = await getPost({ slug: Array.isArray(slug) ? slug[0] : slug })
+  const content = await getPost(Array.isArray(slug) ? slug[0] : slug)
   return {
-    props: { ...content, slug },
+    props: { ...content },
   }
 }
 
