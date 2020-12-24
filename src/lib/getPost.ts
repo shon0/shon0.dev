@@ -38,7 +38,7 @@ const getPosts = async () => {
     }),
   )
   return posts
-    .filter(post => !post.draft)
+    .filter(post => process.env.NODE_ENV === 'development' || !post.draft)
     .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
 }
 
