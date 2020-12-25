@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import { ParsedUrlQuery } from 'querystring'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
 import Icon from 'components/icon'
@@ -40,8 +39,12 @@ const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
             {tags && (
               <div className="ml-3">
                 {tags.map(tag => (
-                  <span key={tag} className="font-consolas text-gray-700 ml-2 first:ml-0">
-                    <span className="pr-0.5">#</span>{tag}
+                  <span
+                    key={tag}
+                    className="font-consolas text-gray-700 ml-2 first:ml-0"
+                  >
+                    <span className="pr-0.5">#</span>
+                    {tag}
                   </span>
                 ))}
               </div>
@@ -69,8 +72,12 @@ const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as Required<ParsedUrlQuery>
+export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
+  params,
+}) => {
+  if (!params?.slug) throw new Error('Missing slug params')
+
+  const { slug } = params
 
   const content = await getPost(Array.isArray(slug) ? slug[0] : slug)
   return {
