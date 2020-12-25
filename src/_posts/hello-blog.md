@@ -1,6 +1,6 @@
 ---
 title: Next.jsでブログを作って、動的OGPも用意した
-publishedAt: 2020/12/22
+publishedAt: 2020/12/25
 tags: ['Next.js']
 ---
 
