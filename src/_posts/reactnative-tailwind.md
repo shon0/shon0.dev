@@ -1,6 +1,6 @@
 ---
 title: React NativeでもTailwindを使いたい
-publishedAt: 2020/11/27
+publishedAt: 2020/12/25
 tags: ['ReactNative', 'tailwind']
 ---
 
