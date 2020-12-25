@@ -2,7 +2,6 @@
 title: Next.jsでブログを作って、動的OGPも用意した
 publishedAt: 2020/12/22
 tags: ['Next.js']
-draft: true
 ---
 
 Jamstackな構成を作ってみたくて、Next.jsでブログを作ってみました。
