@@ -77,9 +77,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
 }) => {
   if (!params?.slug) throw new Error('Missing slug params')
 
-  const { slug } = params
-
-  const content = await getPost(Array.isArray(slug) ? slug[0] : slug)
+  const content = await getPost(params.slug)
   return {
     props: { ...content },
   }
