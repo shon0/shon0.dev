@@ -65,6 +65,10 @@
   @apply break-all;
 }
 
+.markdown li > p {
+  @apply break-all inline-block my-0;
+}
+
 .markdown a {
   @apply text-blue-500 px-1;
 }
