@@ -30,7 +30,7 @@ Next.jsはv7くらいから使い始めて、今年も使い続けている。
 
 Utility FirstなCSSフレームワーク。
 
-いままで、スタイリングには `styled-components` を使うことが多かったが、今年はTailwindしか使ってない。
+いままでスタイリングには `styled-components` を使うことが多かったが、今年はTailwindをメインで使用した。
 
 CSS設計と向き合えていない自分には使い勝手が良い。
 
