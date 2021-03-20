@@ -26,7 +26,7 @@ const apiHandler: NextApiHandler = async (req, res) => {
     slug: content.id,
     draftKey: req.query.draftKey,
   })
-  res.writeHead(307, { Location: `/${content.id}` })
+  res.writeHead(307, { Location: `/posts/${content.id}` })
   res.end('Preview mode enabled')
 }
 
