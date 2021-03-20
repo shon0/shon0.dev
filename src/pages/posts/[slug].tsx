@@ -4,6 +4,7 @@ import {
   InferGetStaticPropsType,
   GetStaticPropsContext,
 } from 'next'
+import ErrorPage from 'next/error'
 import dayjs from 'dayjs'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
@@ -16,6 +17,10 @@ import processor from 'lib/processor'
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Page: NextPage<Props> = ({ id, title, publishedAt, body }) => {
+  if (!id) {
+    return <ErrorPage statusCode={404} />
+  }
+
   const description =
     body.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
   const url = `${URL_HOST}/${id}`
@@ -65,12 +70,20 @@ const Page: NextPage<Props> = ({ id, title, publishedAt, body }) => {
   )
 }
 
-export const getStaticProps = async ({
-  params,
-}: GetStaticPropsContext<{ slug: string }>) => {
-  if (!params?.slug) throw new Error('Missing slug params')
+export const getStaticProps = async (
+  context: GetStaticPropsContext<{
+    slug: string
+  }>,
+) => {
+  const slug = context.params?.slug
+  const draftKey = context.previewData?.draftKey
 
-  const article = await client.articles._contentId(params.slug).$get()
+  if (!slug) throw new Error('Missing slug params')
+
+  const article = await client.articles
+    ._contentId(slug)
+    .$get({ query: { draftKey: draftKey ?? undefined } })
+
   const body = await processor.process(article.body)
   return {
     props: { ...article, body: body.toString() },
@@ -83,7 +96,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = articles.contents.map(article => ({
     params: { slug: article.id },
   }))
-  return { paths, fallback: false }
+  return { paths, fallback: true }
 }
 
 export default Page
