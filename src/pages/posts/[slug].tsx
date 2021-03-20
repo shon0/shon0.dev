@@ -4,7 +4,6 @@ import {
   InferGetStaticPropsType,
   GetStaticPropsContext,
 } from 'next'
-import ErrorPage from 'next/error'
 import dayjs from 'dayjs'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
@@ -13,6 +12,7 @@ import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
 import styles from 'styles/markdown.module.css'
 import { client } from 'api'
 import processor from 'lib/processor'
+import NotFound from '../404'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -68,7 +68,7 @@ const Page: NextPage<Props> = props => {
       </Layout>
     )
   } else {
-    return <ErrorPage statusCode={404} />
+    return <NotFound />
   }
 }
 
