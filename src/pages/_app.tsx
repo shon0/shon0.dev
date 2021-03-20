@@ -1,5 +1,5 @@
 import 'styles/global.css'
-import 'styles/prism.css'
+import 'highlight.js/styles/gradient-dark.css'
 
 import { AppProps } from 'next/app'
 import Head from 'next/head'

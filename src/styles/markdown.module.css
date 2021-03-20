@@ -5,19 +5,19 @@
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  @apply font-bold py-2 -mb-4;
+  @apply font-bold py-2;
 }
 
 .markdown h1 {
-  @apply text-2xl mt-12;
+  @apply text-2xl;
 }
 
 .markdown h2 {
-  @apply text-xl mt-10;
+  @apply text-xl;
 }
 
 .markdown h3 {
-  @apply text-lg mt-8;
+  @apply text-lg;
 }
 
 .markdown h1 a,
@@ -34,13 +34,6 @@
 
 .markdown p {
   @apply break-words;
-}
-
-.markdown p,
-.markdown ul,
-.markdown ol,
-.markdown blockquote {
-  @apply my-7;
 }
 
 .markdown ul,
@@ -99,9 +92,9 @@
 }
 
 .markdown pre {
-  @apply overflow-x-auto bg-gray-900 -mx-4 sm:-mx-6 px-4 sm:px-8 py-3 sm:py-6 leading-7;
+  @apply overflow-x-auto -mx-4 sm:-mx-6 leading-7;
 }
 
 .markdown pre code {
-  @apply text-white font-consolas text-sm;
+  @apply text-white font-consolas text-sm sm:p-10 py-3 px-4 leading-7;
 }

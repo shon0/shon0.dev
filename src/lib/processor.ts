@@ -1,27 +1,10 @@
 import unified from 'unified'
-import markdown from 'remark-parse'
-import gfm from 'remark-gfm'
+import parse from 'rehype-parse'
 import slug from 'rehype-slug'
 import autolink from 'rehype-autolink-headings'
-import remark2rehype from 'remark-rehype'
 import stringify from 'rehype-stringify'
-import prism from '@mapbox/rehype-prism'
-
-const markdownToHtml = async (content: string) => {
-  return await unified()
-    .use(markdown)
-    .use(gfm)
-    .use(remark2rehype)
-    .use(slug)
-    .use(autolink, {
-      content: linkIcon,
-    })
-    .use(prism)
-    .use(stringify)
-    .process(content)
-}
-
-export default markdownToHtml
+import cheerio from 'cheerio'
+import hljs from 'highlight.js'
 
 const linkIcon = {
   type: 'element',
@@ -48,3 +31,23 @@ const linkIcon = {
     },
   ],
 }
+
+const process = async (html: string) => {
+  const $ = cheerio.load(html)
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
+
+  return await unified()
+    .use(parse)
+    .use(slug)
+    .use(autolink, {
+      content: linkIcon,
+    })
+    .use(stringify)
+    .process($.html())
+}
+
+export default { process }

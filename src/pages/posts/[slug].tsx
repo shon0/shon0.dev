@@ -1,18 +1,24 @@
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
+import {
+  GetStaticPaths,
+  NextPage,
+  InferGetStaticPropsType,
+  GetStaticPropsContext,
+} from 'next'
+import dayjs from 'dayjs'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
 import Icon from 'components/icon'
 import { SITE_TITLE, URL_HOST, OG_IMAGE_URL } from 'constant'
-import { getPost, getPostSlugs } from 'lib/getPost'
-import { Post } from 'lib/types/post'
 import styles from 'styles/markdown.module.css'
+import { client } from 'api'
+import processor from 'lib/processor'
 
-type Props = Post
+type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
+const Page: NextPage<Props> = ({ id, title, publishedAt, body }) => {
   const description =
-    content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
-  const url = `${URL_HOST}/${slug}`
+    body.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').slice(0, 100) + '...'
+  const url = `${URL_HOST}/${id}`
   const tweetUrl = encodeURI(
     `http://twitter.com/share?url=${url}&text=${title} | ${SITE_TITLE.replace(
       '.',
@@ -34,26 +40,13 @@ const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
           <h1 className="text-4xl font-bold leading-normal">{title}</h1>
           <div className="flex mt-3">
             <span className="font-consolas text-gray-800">
-              <time>{publishedAt}</time>
+              <time>{dayjs(publishedAt).format('YYYY/MM/DD')}</time>
             </span>
-            {tags && (
-              <div className="ml-3">
-                {tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="font-consolas text-gray-700 ml-2 first:ml-0"
-                  >
-                    <span className="pr-0.5">#</span>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </header>
         <section>
           <div
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: body }}
             className={styles['markdown']}
           />
         </section>
@@ -72,20 +65,23 @@ const Page: NextPage<Props> = ({ title, publishedAt, content, slug, tags }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
+export const getStaticProps = async ({
   params,
-}) => {
+}: GetStaticPropsContext<{ slug: string }>) => {
   if (!params?.slug) throw new Error('Missing slug params')
 
-  const content = await getPost(params.slug)
+  const article = await client.articles._contentId(params.slug).$get()
+  const body = await processor.process(article.body)
   return {
-    props: { ...content },
+    props: { ...article, body: body.toString() },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPostSlugs().map(slug => ({
-    params: { slug },
+  client.articles.$get()
+  const articles = await client.articles.$get({ query: { fields: 'id' } })
+  const paths = articles.contents.map(article => ({
+    params: { slug: article.id },
   }))
   return { paths, fallback: false }
 }
