@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { default as NextHead } from 'next/head'
+import NextHead from 'next/head'
 import Layout from 'components/Layout'
 import Head from 'components/Head'
 import { SITE_TITLE, URL_HOST } from 'constant'
