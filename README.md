@@ -1,3 +1,3 @@
 # shon0/Blog
 
-https://shon0.dev/
+https://shon0.vercel.app
